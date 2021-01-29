@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fc3c5791841ee741acc8fa322879f9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  theCamera: {fileID: 0}
 --- !u!1001 &1840829436666827915
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -22,7 +23,7 @@ PrefabInstance:
     - target: {fileID: 4687815835902073952, guid: 63ef2004dfd04754e80136496ab5e438,
         type: 3}
       propertyPath: m_Name
-      value: Point Light 2D Variant
+      value: UserLight
       objectReference: {fileID: 0}
     - target: {fileID: 4687815835902073954, guid: 63ef2004dfd04754e80136496ab5e438,
         type: 3}
@@ -32,12 +33,12 @@ PrefabInstance:
     - target: {fileID: 4687815835902073954, guid: 63ef2004dfd04754e80136496ab5e438,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -0.83
       objectReference: {fileID: 0}
     - target: {fileID: 4687815835902073954, guid: 63ef2004dfd04754e80136496ab5e438,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.88
       objectReference: {fileID: 0}
     - target: {fileID: 4687815835902073954, guid: 63ef2004dfd04754e80136496ab5e438,
         type: 3}

@@ -8,8 +8,8 @@ public class BounceStats : MonoBehaviour
     public static BounceStats SingleInstance;
 
 
-    public Action OnDoorExit;
-    public Action OnDoorEnter;
+    public static Action OnDoorExit;
+    public static Action OnDoorEnter;
     public int keys { get; private set; }
 
     public static Action OnKeyCollect;

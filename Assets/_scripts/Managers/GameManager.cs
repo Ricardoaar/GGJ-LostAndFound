@@ -1,12 +1,9 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
     public static Action OnGameOver;
-
-    private void Awake()
-    {
-        OnGameOver += () => Time.timeScale = 0;
-    }
+    private bool _isInGame;
 }

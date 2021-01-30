@@ -24,7 +24,11 @@ namespace _scripts
 
         public void BackToQueue()
         {
-            pool.EnqueueObj(gameObject);
+            if (pool != null)
+            {
+                pool.EnqueueObj(gameObject);
+            }
+
             gameObject.SetActive(false);
         }
 

@@ -1,4 +1,5 @@
-﻿using UnityEditor;
+﻿using System;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -6,12 +7,29 @@ using UnityEngine.SceneManagement;
 public class SceneLoader : MonoBehaviour
 {
     [SerializeField] private SceneAsset lvlToPlay;
+    [SerializeField] private bool canPlayLvl;
+
+    private void Awake()
+    {
+        if (!canPlayLvl)
+        {
+            GetComponent<SpriteRenderer>().color = Color.black;
+        }
+    }
 
     /// <summary>
     /// Drag and drop the next lvl from assets
     /// </summary>
     private void OnMouseDown()
     {
-        SceneManager.LoadScene(lvlToPlay.name);
+        if (canPlayLvl)
+        {
+            SceneManager.LoadScene(lvlToPlay.name);
+        }
+    }
+
+    public void CanPlayLvl()
+    {
+        canPlayLvl = true;
     }
 }

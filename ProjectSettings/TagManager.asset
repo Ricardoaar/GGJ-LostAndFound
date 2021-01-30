@@ -6,6 +6,8 @@ TagManager:
   tags:
   - DamageLeft
   - DamageRight
+  - Door
+  - Key
   layers:
   - Default
   - TransparentFX

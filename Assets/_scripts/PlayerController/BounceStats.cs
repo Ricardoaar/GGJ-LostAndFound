@@ -1,17 +1,31 @@
-﻿using UnityEngine;
+﻿using System;
+using System.Security.Cryptography;
+using UnityEngine;
 
 public class BounceStats : MonoBehaviour
 {
     [SerializeField] private int initialPlayerLifes;
     private int _currentPlayerLife;
+    public static BounceStats SingleInstance;
+
+
+    public Action OnDoorExit;
+    public Action OnDoorEnter;
+    public int keys { get; private set; }
 
     private void OnEnable()
     {
+        keys = 0;
         BounceController.OnPlayerDamage += LostLife;
     }
 
     private void Awake()
     {
+        if (SingleInstance == null)
+        {
+            SingleInstance = this;
+        }
+
         _currentPlayerLife = initialPlayerLifes;
     }
 
@@ -26,8 +40,31 @@ public class BounceStats : MonoBehaviour
     }
 
 
-    private void WinLife(float time)
+    private void CollectKey()
     {
-        initialPlayerLifes++;
+        keys++;
+    }
+
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Door"))
+        {
+            OnDoorEnter?.Invoke();
+        }
+
+        if (other.CompareTag("Key"))
+        {
+            other.gameObject.SetActive(false);
+            CollectKey();
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.CompareTag("Door"))
+        {
+            OnDoorExit?.Invoke();
+        }
     }
 }

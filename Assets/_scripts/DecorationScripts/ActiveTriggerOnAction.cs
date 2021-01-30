@@ -2,7 +2,7 @@
 using UnityEngine;
 
 [RequireComponent(typeof(Animator))]
-public class TriggerAnimation : MonoBehaviour
+public class ActiveTriggerOnAction : MonoBehaviour
 {
     [SerializeField] private String animationName;
     [SerializeField] private InteractiveObject script;

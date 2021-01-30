@@ -1,17 +1,18 @@
 ﻿using System;
-using System.Security.Cryptography;
 using UnityEngine;
 
 public class BounceStats : MonoBehaviour
 {
     [SerializeField] private int initialPlayerLifes;
-    private int _currentPlayerLife;
+    public int currentPlayerLife { get; private set; }
     public static BounceStats SingleInstance;
 
 
     public Action OnDoorExit;
     public Action OnDoorEnter;
     public int keys { get; private set; }
+
+    public static Action OnKeyCollect;
 
     private void OnEnable()
     {
@@ -26,14 +27,14 @@ public class BounceStats : MonoBehaviour
             SingleInstance = this;
         }
 
-        _currentPlayerLife = initialPlayerLifes;
+        currentPlayerLife = initialPlayerLifes;
     }
 
     private void LostLife(float time)
     {
-        _currentPlayerLife--;
+        currentPlayerLife--;
 
-        if (_currentPlayerLife > 0) return;
+        if (currentPlayerLife > 0) return;
         Debug.Log("You lost");
 
         GameManager.OnGameOver.Invoke();
@@ -43,6 +44,7 @@ public class BounceStats : MonoBehaviour
     private void CollectKey()
     {
         keys++;
+        OnKeyCollect?.Invoke();
     }
 
 
@@ -57,6 +59,13 @@ public class BounceStats : MonoBehaviour
         {
             other.gameObject.SetActive(false);
             CollectKey();
+        }
+
+        if (other.CompareTag("Mask"))
+        {
+            LevelManager.SingleInstance.PassLvl(other.GetComponent<MaskIdentifier>().getId);
+            UIInGame.SingleInstance.ChangeMaskImage();
+            other.gameObject.SetActive(false);
         }
     }
 

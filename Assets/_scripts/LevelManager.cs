@@ -1,10 +1,12 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 [DefaultExecutionOrder(-3000)]
 public class LevelManager : MonoBehaviour
 {
-    [SerializeField] private int lvlsCompleted = 0;
+    [SerializeField] private int lvlsCompleted;
     public static LevelManager SingleInstance;
+    private readonly List<int> _levelsCompleted = new List<int>();
 
     private void Awake()
     {
@@ -14,8 +16,10 @@ public class LevelManager : MonoBehaviour
         }
     }
 
-    public void PassLvl()
+    public void PassLvl(int lvlComplete)
     {
+        if (_levelsCompleted.Contains(lvlComplete)) return;
+        _levelsCompleted.Add(lvlComplete);
         lvlsCompleted++;
     }
 

@@ -8,6 +8,7 @@ TagManager:
   - DamageRight
   - Door
   - Key
+  - Mask
   layers:
   - Default
   - TransparentFX

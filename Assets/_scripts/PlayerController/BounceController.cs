@@ -6,27 +6,45 @@ public delegate void VoidEvent(float time);
 [RequireComponent(typeof(Rigidbody2D))]
 public class BounceController : MonoBehaviour
 {
+    #region Variables
+
     public static event VoidEvent OnPlayerDamage;
     private Rigidbody2D _rigidbody2D;
     [SerializeField] private float velocity;
-    private float _horizontal, _vertical;
-    private bool _jumping;
     [SerializeField] private float jumpForce;
     [SerializeField] private float maxDistanceGround;
+    [SerializeField] private float immuneTime;
+    public static BounceController SingleInstance;
+    private float _horizontal, _vertical;
+    private bool _jumping;
     public LayerMask groundLayer;
     private bool _canGetDamage = true;
     private bool _canMove = true;
-    [SerializeField] private float immuneTime;
 
+    #endregion
 
     private void Awake()
     {
+        if (SingleInstance == null)
+        {
+            SingleInstance = this;
+        }
+
         _rigidbody2D = GetComponent<Rigidbody2D>();
     }
 
+    private void OnDisable()
+    {
+        SingleInstance = null;
+    }
 
     private void Update()
     {
+        if (Time.timeScale == 0)
+        {
+            return;
+        }
+
         _horizontal = Input.GetAxisRaw("Horizontal");
 
 

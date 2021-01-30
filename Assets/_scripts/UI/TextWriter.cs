@@ -50,19 +50,25 @@ public class TextWriter : MonoBehaviour, ISceneLoad
         while (counter < textScriptable.text.Length)
         {
             textContainer.text = String.Concat(textContainer.text, textScriptable.text[counter]);
-            yield return new WaitForSeconds(timeBetweenWord);
+            yield return new WaitForSecondsRealtime(timeBetweenWord);
             counter++;
         }
+
+        textContainer.text = textScriptable.text;
 
         _cWriting = null;
     }
 
     private void OnEnable()
     {
-        if (_cWriting == null)
-        {
-            _cWriting = StartCoroutine(WriteText());
-        }
+        _cWriting = StartCoroutine(WriteText());
+        Time.timeScale = 0;
+    }
+
+
+    private void OnDisable()
+    {
+        Time.timeScale = 1;
     }
 
     public void NotifySceneLoad()

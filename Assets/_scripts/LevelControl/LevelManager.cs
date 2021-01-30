@@ -33,4 +33,10 @@ public class LevelManager : MonoBehaviour
     {
         return lvlsCompleted;
     }
+
+
+    public List<int> GetLevelsSum()
+    {
+        return _levelsCompleted;
+    }
 }

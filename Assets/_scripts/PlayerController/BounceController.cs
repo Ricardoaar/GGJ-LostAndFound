@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
 
 public delegate void VoidEvent(float time);
@@ -14,7 +15,8 @@ public class BounceController : MonoBehaviour
     [SerializeField] private float jumpForce;
     [SerializeField] private float maxDistanceGround;
     [SerializeField] private float immuneTime;
-    private float _horizontal, _vertical;
+
+    private float _horizontal, _vertical, _lastHorizontal = 1;
     private bool _jumping;
     public LayerMask groundLayer;
     private bool _canGetDamage = true;
@@ -53,7 +55,13 @@ public class BounceController : MonoBehaviour
             return;
         }
 
+
         _horizontal = Input.GetAxisRaw("Horizontal");
+
+        if (_horizontal != 0)
+        {
+            _lastHorizontal = _horizontal;
+        }
 
 
         if (Input.GetKeyDown(KeyCode.Space) && IsOnGround())
@@ -136,5 +144,14 @@ public class BounceController : MonoBehaviour
         yield return new WaitUntil(() => _sleepCoroutine == null);
         yield return new WaitForSeconds(immuneTime - time);
         _canGetDamage = true;
+    }
+
+    public void GetPlayerState(out bool isOnGround, out float horizontalDirection, out bool moving,
+        out float verticalForce)
+    {
+        isOnGround = IsOnGround();
+        horizontalDirection = _lastHorizontal;
+        verticalForce = _rigidbody2D.velocity.y;
+        moving = _horizontal != 0;
     }
 }

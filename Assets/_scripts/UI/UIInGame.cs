@@ -3,19 +3,35 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
+[DefaultExecutionOrder(500)]
 public class UIInGame : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI keys;
     [SerializeField] private List<Image> lifesImages, maskImages = new List<Image>();
     [SerializeField] private List<Sprite> maskSprites = new List<Sprite>();
     [SerializeField] private Sprite activeLifeImg, inactiveLifeImage;
-
+    [SerializeField] private GameObject gameOverPanel;
 
     public static UIInGame SingleInstance;
 
     private void Awake()
     {
-        SingleInstance = this;
+        gameOverPanel.SetActive(false);
+        if (SingleInstance == null)
+        {
+            SingleInstance = this;
+        }
+    }
+
+
+    private void Start()
+    {
+        ChangeLifes(BounceStats.SingleInstance.GetPlayerLife());
+    }
+
+    private void OnGameOver()
+    {
+        gameOverPanel.SetActive(true);
     }
 
 
@@ -34,16 +50,19 @@ public class UIInGame : MonoBehaviour
     private void OnEnable()
     {
         BounceController.OnPlayerDamage += ChangeLifeStateOnPlayerDamage;
+        GameManager.OnGameOver += OnGameOver;
     }
 
     private void OnDisable()
     {
         BounceController.OnPlayerDamage -= ChangeLifeStateOnPlayerDamage;
+        GameManager.OnGameOver -= OnGameOver;
+        SingleInstance = null;
     }
 
     private void ChangeLifeStateOnPlayerDamage(float time)
     {
-        ChangeLifes(BounceStats.SingleInstance.currentPlayerLife);
+        ChangeLifes(BounceStats.SingleInstance.GetPlayerLife());
     }
 
     private void ChangeLifes(int num)

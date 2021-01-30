@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using DefaultNamespace;
 using UnityEngine;
 
@@ -7,6 +8,19 @@ public class OnSceneLoadEvent : MonoBehaviour
 {
     private static List<ISceneLoad> _notifiers = new List<ISceneLoad>();
 
+    private static OnSceneLoadEvent _singleInstance;
+
+    private void Awake()
+    {
+        if (_singleInstance == null)
+        {
+            _singleInstance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
 
     public static void AddNotifier(ISceneLoad notifier)
     {

@@ -253,7 +253,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 206573386}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_MethodName: LoadCurrentScene
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &378631356
 GameObject:
   m_ObjectHideFlags: 0
@@ -572,12 +583,12 @@ GameObject:
   - component: {fileID: 573296146}
   - component: {fileID: 573296145}
   m_Layer: 5
-  m_Name: GameStatus
+  m_Name: GameOver
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &573296144
 RectTransform:
   m_ObjectHideFlags: 0
@@ -709,7 +720,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.08817969, y: 0.5}
   m_AnchorMax: {x: 0.46100003, y: 0.859}
-  m_AnchoredPosition: {x: 9.500061, y: 2.0361938}
+  m_AnchoredPosition: {x: 9.500122, y: 2.0361938}
   m_SizeDelta: {x: -38.999878, y: -35.380417}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2113380850
@@ -794,11 +805,11 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 0}
-        m_MethodName: 
+        m_MethodName: LoadMenuScene
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -1174,6 +1185,7 @@ GameObject:
   - component: {fileID: 9186760323115840177}
   - component: {fileID: 9186760323115840182}
   - component: {fileID: 9186760323115840183}
+  - component: {fileID: 2115926898}
   m_Layer: 5
   m_Name: GameCanvasGeneric
   m_TagString: Untagged
@@ -1263,6 +1275,34 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &2115926898
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9186760323115840180}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a797a8b3530ebeb489a3b1b7906e54b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  keys: {fileID: 9186760323441357540}
+  lifesImages:
+  - {fileID: 9186760323771344358}
+  - {fileID: 9186760322760978124}
+  - {fileID: 9186760324709279740}
+  maskImages:
+  - {fileID: 0}
+  maskSprites:
+  - {fileID: 21300000, guid: 119c8800c432dc04f8b9cfa67e2f0416, type: 3}
+  - {fileID: -313121408929343006, guid: eb206d1b366a8ae44982efa90e4e0ef6, type: 3}
+  - {fileID: 21300000, guid: 0cf4de7dfafd9554e826de9668c9bd81, type: 3}
+  - {fileID: 4854792171674689496, guid: eb206d1b366a8ae44982efa90e4e0ef6, type: 3}
+  activeLifeImg: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  inactiveLifeImage: {fileID: 8501556022896169674, guid: a6e9bbeb97c350d4bad24d910a92b026,
+    type: 3}
+  gameOverPanel: {fileID: 573296143}
 --- !u!1 &9186760323441357530
 GameObject:
   m_ObjectHideFlags: 0

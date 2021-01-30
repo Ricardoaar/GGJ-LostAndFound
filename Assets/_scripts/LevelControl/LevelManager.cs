@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 [DefaultExecutionOrder(-3000)]
@@ -14,7 +15,12 @@ public class LevelManager : MonoBehaviour
         {
             SingleInstance = this;
         }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
+
 
     public void PassLvl(int lvlComplete)
     {

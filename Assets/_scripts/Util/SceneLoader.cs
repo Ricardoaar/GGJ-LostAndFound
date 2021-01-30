@@ -1,4 +1,5 @@
-﻿using UnityEditor;
+﻿using System;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -8,7 +9,8 @@ public class SceneLoader : MonoBehaviour
     [SerializeField] private SceneAsset lvlToPlay;
     [SerializeField] private bool canPlayLvl;
 
-    private void Awake()
+
+    private void Start()
     {
         if (!canPlayLvl)
         {

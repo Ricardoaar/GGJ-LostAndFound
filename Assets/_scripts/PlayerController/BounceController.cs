@@ -14,7 +14,6 @@ public class BounceController : MonoBehaviour
     [SerializeField] private float jumpForce;
     [SerializeField] private float maxDistanceGround;
     [SerializeField] private float immuneTime;
-    public static BounceController SingleInstance;
     private float _horizontal, _vertical;
     private bool _jumping;
     public LayerMask groundLayer;
@@ -23,19 +22,28 @@ public class BounceController : MonoBehaviour
 
     #endregion
 
+
     private void Awake()
     {
-        if (SingleInstance == null)
-        {
-            SingleInstance = this;
-        }
+        gameObject.SetActive(true);
 
         _rigidbody2D = GetComponent<Rigidbody2D>();
     }
 
     private void OnDisable()
     {
-        SingleInstance = null;
+        // OnPlayerDamage = null;
+        GameManager.OnGameOver -= OnGameOverAction;
+    }
+
+    private void OnEnable()
+    {
+        GameManager.OnGameOver += OnGameOverAction;
+    }
+
+    private void OnGameOverAction()
+    {
+        gameObject.SetActive(false);
     }
 
     private void Update()
@@ -105,7 +113,6 @@ public class BounceController : MonoBehaviour
         {
             _rigidbody2D.AddForce(Vector2.left * -velocity + Vector2.up * jumpForce, ForceMode2D.Impulse);
         }
-
 
         StopAllCoroutines();
         StartCoroutine(RestartNoImmune());

@@ -8,19 +8,23 @@ public class TextWriter : MonoBehaviour, ISceneLoad
 {
     [SerializeField, Range(0, 10)] private float timeBetweenWord;
     [SerializeField] private TextMeshProUGUI textContainer;
-
-    [SerializeField] private TextInGame textScriptable;
     [SerializeField] private GameObject master;
-    private Coroutine _cWriting = null;
+    private TextInGame _textScriptable;
+    private Coroutine _cWriting;
 
     public static TextWriter SingleInstance;
 
     private void Awake()
     {
+        Debug.Log("VAR");
         OnSceneLoadEvent.AddNotifier(this);
         if (SingleInstance == null)
         {
             SingleInstance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
         }
     }
 
@@ -31,13 +35,13 @@ public class TextWriter : MonoBehaviour, ISceneLoad
 
         if (_cWriting == null)
         {
-            master.SetActive(false);
+            DisableText();
         }
         else
         {
             StopCoroutine(_cWriting);
             _cWriting = null;
-            textContainer.text = textScriptable.text;
+            textContainer.text = _textScriptable.text;
         }
     }
 
@@ -47,33 +51,54 @@ public class TextWriter : MonoBehaviour, ISceneLoad
         textContainer.text = "";
 
         var counter = 0;
-        while (counter < textScriptable.text.Length)
+        while (counter < _textScriptable.text.Length)
         {
-            textContainer.text = String.Concat(textContainer.text, textScriptable.text[counter]);
+            textContainer.text = String.Concat(textContainer.text, _textScriptable.text[counter]);
             yield return new WaitForSecondsRealtime(timeBetweenWord);
             counter++;
         }
 
-        textContainer.text = textScriptable.text;
+        textContainer.text = _textScriptable.text;
 
         _cWriting = null;
     }
 
-    private void OnEnable()
+    public void StartWriting(TextInGame text)
     {
-        _cWriting = StartCoroutine(WriteText());
-        Time.timeScale = 0;
+        _textScriptable = text;
+        ActivateText();
+    }
+
+    private void ActivateText()
+    {
+        master.gameObject.SetActive(true);
+        if (_textScriptable != null)
+        {
+            try
+            {
+                _cWriting = StartCoroutine(WriteText());
+                Time.timeScale = 0;
+            }
+            catch (NullReferenceException e)
+            {
+                DisableText();
+                Console.WriteLine($"{e.Message} No text attached");
+            }
+        }
+        else
+            DisableText();
     }
 
 
-    private void OnDisable()
+    private void DisableText()
     {
         Time.timeScale = 1;
+        master.SetActive(false);
     }
 
     public void NotifySceneLoad()
     {
-        master.SetActive(false);
+        DisableText();
         StopAllCoroutines();
         _cWriting = null;
     }

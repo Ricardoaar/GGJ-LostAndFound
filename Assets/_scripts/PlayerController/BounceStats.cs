@@ -1,10 +1,11 @@
 ﻿using System;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class BounceStats : MonoBehaviour
 {
     [SerializeField] private int initialPlayerLifes;
-    public int currentPlayerLife { get; private set; }
+    private int _currentPlayerLife;
     public static BounceStats SingleInstance;
 
 
@@ -13,11 +14,28 @@ public class BounceStats : MonoBehaviour
     public int keys { get; private set; }
 
     public static Action OnKeyCollect;
+    public static Action OnMaskCollect;
+
+    public int GetPlayerLife()
+    {
+        return _currentPlayerLife;
+    }
 
     private void OnEnable()
     {
         keys = 0;
         BounceController.OnPlayerDamage += LostLife;
+        _currentPlayerLife = initialPlayerLifes;
+    }
+
+    private void OnDisable()
+    {
+        BounceController.OnPlayerDamage -= LostLife;
+    }
+
+    private void OnDestroy()
+    {
+        SingleInstance = null;
     }
 
     private void Awake()
@@ -27,17 +45,17 @@ public class BounceStats : MonoBehaviour
             SingleInstance = this;
         }
 
-        currentPlayerLife = initialPlayerLifes;
+        _currentPlayerLife = initialPlayerLifes;
     }
 
     private void LostLife(float time)
     {
-        currentPlayerLife--;
+        _currentPlayerLife--;
 
-        if (currentPlayerLife > 0) return;
+        if (_currentPlayerLife > 0) return;
         Debug.Log("You lost");
 
-        GameManager.OnGameOver.Invoke();
+        GameManager.OnGameOver?.Invoke();
     }
 
 
@@ -63,9 +81,15 @@ public class BounceStats : MonoBehaviour
 
         if (other.CompareTag("Mask"))
         {
-            LevelManager.SingleInstance.PassLvl(other.GetComponent<MaskIdentifier>().getId);
-            UIInGame.SingleInstance.ChangeMaskImage();
+            LevelManager.SingleInstance.PassLvl(other.GetComponent<MaskCollectable>().getId);
+            //  UIInGame.SingleInstance.ChangeMaskImage();
+            OnMaskCollect?.Invoke();
             other.gameObject.SetActive(false);
+        }
+
+        if (other.gameObject.layer == LayerMask.NameToLayer("OpenText"))
+        {
+            other.GetComponent<TextTrigger>().ShowText();
         }
     }
 

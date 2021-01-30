@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.Experimental.GlobalIllumination;
 
-public static class UtilLag
+public static class Util
 {
     /// <summary>
     /// Encuentra el valor de un angulo a partir de un Vector

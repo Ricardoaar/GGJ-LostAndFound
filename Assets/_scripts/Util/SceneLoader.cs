@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEditor;
+﻿using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -22,10 +21,10 @@ public class SceneLoader : MonoBehaviour
     /// </summary>
     private void OnMouseDown()
     {
-        if (canPlayLvl)
-        {
-            SceneManager.LoadScene(lvlToPlay.name);
-        }
+        if (!canPlayLvl) return;
+
+        SceneManager.LoadScene(lvlToPlay.name);
+        OnSceneLoadEvent.OnSceneLoad();
     }
 
     public void CanPlayLvl()

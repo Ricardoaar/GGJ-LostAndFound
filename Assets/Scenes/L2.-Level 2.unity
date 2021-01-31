@@ -294,6 +294,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3487248414632718002, guid: 17e9f836d23fc0a44813de3dc9af72ab,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 459057345611339617, guid: 1e80a30bb627a9740828780617e53d9d,
+        type: 3}
     - target: {fileID: 3487248414632718003, guid: 17e9f836d23fc0a44813de3dc9af72ab,
         type: 3}
       propertyPath: m_Name
@@ -586,6 +592,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3487248414632718002, guid: 17e9f836d23fc0a44813de3dc9af72ab,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 459057345611339617, guid: 1e80a30bb627a9740828780617e53d9d,
+        type: 3}
     - target: {fileID: 3487248414632718003, guid: 17e9f836d23fc0a44813de3dc9af72ab,
         type: 3}
       propertyPath: m_Name
@@ -655,6 +667,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3487248414632718002, guid: 17e9f836d23fc0a44813de3dc9af72ab,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 459057345611339617, guid: 1e80a30bb627a9740828780617e53d9d,
+        type: 3}
     - target: {fileID: 3487248414632718003, guid: 17e9f836d23fc0a44813de3dc9af72ab,
         type: 3}
       propertyPath: m_Name
@@ -1117,6 +1135,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3487248414632718002, guid: 17e9f836d23fc0a44813de3dc9af72ab,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 459057345611339617, guid: 1e80a30bb627a9740828780617e53d9d,
+        type: 3}
     - target: {fileID: 3487248414632718003, guid: 17e9f836d23fc0a44813de3dc9af72ab,
         type: 3}
       propertyPath: m_Name
@@ -1608,11 +1632,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2610989973371035096, guid: 8ac015575c2899940a207ed3a5ebac55,
-        type: 3}
-      propertyPath: quantityNecessary
-      value: 4
-      objectReference: {fileID: 0}
     - target: {fileID: 2610989973371035098, guid: 8ac015575c2899940a207ed3a5ebac55,
         type: 3}
       propertyPath: m_RootOrder
@@ -1672,11 +1691,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Dooor
-      objectReference: {fileID: 0}
-    - target: {fileID: 2610989973371035100, guid: 8ac015575c2899940a207ed3a5ebac55,
-        type: 3}
-      propertyPath: m_Layer
-      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8ac015575c2899940a207ed3a5ebac55, type: 3}

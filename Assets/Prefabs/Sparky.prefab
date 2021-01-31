@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 2711794768259268708}
   - component: {fileID: 2711794768259268713}
   - component: {fileID: 2711794768259268712}
+  - component: {fileID: 2711794768462867827}
   m_Layer: 0
   m_Name: Sparky
   m_TagString: Player
@@ -76,7 +77,8 @@ SpriteRenderer:
   m_SortingLayerID: -1758597145
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 119c8800c432dc04f8b9cfa67e2f0416, type: 3}
+  m_Sprite: {fileID: 8819684256598280548, guid: 5136093b06d2c424d84fe0ae9f515019,
+    type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -121,9 +123,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.009983182}
+  m_Offset: {x: 0, y: 0.003234964}
   serializedVersion: 2
-  m_Radius: 0.44010195
+  m_Radius: 0.38282397
 --- !u!114 &2711794768259268708
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -139,10 +141,10 @@ MonoBehaviour:
   velocity: 5
   jumpForce: 8
   maxDistanceGround: 0.4
+  immuneTime: 1
   groundLayer:
     serializedVersion: 2
     m_Bits: 256
-  immuneTime: 1
 --- !u!114 &2711794768259268713
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -155,6 +157,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ad464bf9dcc5334f8ba0910d0cdddaa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dieParticle: {fileID: 4035831974824584873, guid: 20a927cf1d6f8d74ca536a2a44d4f414,
+    type: 3}
+  controller: {fileID: 2711794768259268708}
 --- !u!114 &2711794768259268712
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -168,6 +173,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   initialPlayerLifes: 3
+--- !u!95 &2711794768462867827
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2711794768259268707}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 635aed4ece179d840b86015270e56769, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &7254258119607293436
 PrefabInstance:
   m_ObjectHideFlags: 0

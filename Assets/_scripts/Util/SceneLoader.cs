@@ -1,12 +1,10 @@
-﻿using System;
-using UnityEditor;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(Collider2D))]
 public class SceneLoader : MonoBehaviour
 {
-    [SerializeField] private SceneAsset lvlToPlay;
+    [SerializeField] private int lvlToPlay;
     [SerializeField] private bool canPlayLvl;
 
 
@@ -25,7 +23,7 @@ public class SceneLoader : MonoBehaviour
     {
         if (!canPlayLvl) return;
 
-        SceneManager.LoadScene(lvlToPlay.name);
+        SceneManager.LoadScene(lvlToPlay);
         OnSceneLoadEvent.OnSceneLoad();
     }
 

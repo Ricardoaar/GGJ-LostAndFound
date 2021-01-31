@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
@@ -11,6 +12,12 @@ public class MaskUpdater : MonoBehaviour
     private void Start()
     {
         ChangeMaskImage();
+    }
+
+
+    private void OnDisable()
+    {
+        BounceStats.OnMaskCollect -= ChangeMaskImage;
     }
 
     public void ChangeMaskImage()
@@ -38,5 +45,11 @@ public class MaskUpdater : MonoBehaviour
                 maskImage.sprite = maskSprites[5];
                 break;
         }
+    }
+
+    private void OnEnable()
+    {
+        BounceStats.OnMaskCollect += ChangeMaskImage;
+        ChangeMaskImage();
     }
 }

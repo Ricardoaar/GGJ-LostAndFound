@@ -1,6 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using TMPro;
+using Unity.Collections.LowLevel.Unsafe;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -13,7 +15,7 @@ public class UIInGame : MonoBehaviour
     [SerializeField] private Image maskImage;
     [SerializeField] private Sprite activeLifeImg, inactiveLifeImage;
     [SerializeField] private GameObject gameOverPanel;
-
+    [SerializeField] private GameObject panelMask;
     public static UIInGame SingleInstance;
 
     private void Awake()
@@ -30,13 +32,13 @@ public class UIInGame : MonoBehaviour
     {
         ChangeLifes(BounceStats.SingleInstance.GetPlayerLife());
         ChangeMaskImage();
+        OnKeyCollectUpdate();
     }
 
     private void OnGameOver()
     {
         gameOverPanel.SetActive(true);
     }
-
 
     public void ChangeMaskImage()
     {
@@ -71,16 +73,28 @@ public class UIInGame : MonoBehaviour
         BounceController.OnPlayerDamage += ChangeLifeStateOnPlayerDamage;
         GameManager.OnGameOver += OnGameOver;
         BounceStats.OnMaskCollect += ChangeMaskImage;
+        BounceStats.OnMaskCollect += UpdateMask;
+        BounceStats.OnKeyCollect += OnKeyCollectUpdate;
     }
+
+    void UpdateMask() => panelMask.gameObject.SetActive(true);
 
     private void OnDisable()
     {
+        BounceStats.OnKeyCollect -= OnKeyCollectUpdate;
         BounceController.OnPlayerDamage -= ChangeLifeStateOnPlayerDamage;
         GameManager.OnGameOver -= OnGameOver;
         BounceStats.OnMaskCollect -= ChangeMaskImage;
+        BounceStats.OnMaskCollect -= UpdateMask;
 
         SingleInstance = null;
     }
+
+    private void OnKeyCollectUpdate()
+    {
+        keys.text = BounceStats.SingleInstance.keys.ToString();
+    }
+
 
     private void ChangeLifeStateOnPlayerDamage(float time)
     {

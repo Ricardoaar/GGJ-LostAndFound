@@ -16,16 +16,13 @@ public class TextWriter : MonoBehaviour, ISceneLoad
 
     private void Awake()
     {
-        Debug.Log("VAR");
-        OnSceneLoadEvent.AddNotifier(this);
         if (SingleInstance == null)
         {
             SingleInstance = this;
+            OnSceneLoadEvent.AddNotifier(this);
         }
         else
-        {
             Destroy(gameObject);
-        }
     }
 
 

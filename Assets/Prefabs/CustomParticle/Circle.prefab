@@ -109,4 +109,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   velocity: 1
-  offsetCameraFinish: 4
+  offsetCameraFinish: 10

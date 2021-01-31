@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -507,6 +507,11 @@ PrefabInstance:
       propertyPath: _canPlayLvl
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6191571075810482295, guid: 8dc1a6f3573c7a7438681ae45f8f0555,
+        type: 3}
+      propertyPath: clipMouseDown
+      value: 
+      objectReference: {fileID: 8300000, guid: 2937b11a5490fdc438bf8176b7b14d44, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8dc1a6f3573c7a7438681ae45f8f0555, type: 3}
 --- !u!114 &433247008 stripped
@@ -815,6 +820,11 @@ PrefabInstance:
       propertyPath: _canPlayLvl
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6191571075810482295, guid: 8dc1a6f3573c7a7438681ae45f8f0555,
+        type: 3}
+      propertyPath: clipMouseDown
+      value: 
+      objectReference: {fileID: 8300000, guid: 2937b11a5490fdc438bf8176b7b14d44, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8dc1a6f3573c7a7438681ae45f8f0555, type: 3}
 --- !u!114 &964067569 stripped
@@ -1105,6 +1115,11 @@ PrefabInstance:
       propertyPath: _canPlayLvl
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6191571075810482295, guid: 8dc1a6f3573c7a7438681ae45f8f0555,
+        type: 3}
+      propertyPath: clipMouseDown
+      value: 
+      objectReference: {fileID: 8300000, guid: 2937b11a5490fdc438bf8176b7b14d44, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8dc1a6f3573c7a7438681ae45f8f0555, type: 3}
 --- !u!114 &1328990565 stripped
@@ -1314,6 +1329,49 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 19f164935b8c3a94cab72ec1c5fc9d49, type: 3}
+--- !u!1 &1946702547
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1946702549}
+  - component: {fileID: 1946702548}
+  m_Layer: 0
+  m_Name: SFXHelper
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1946702548
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1946702547}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e11b3e512a7d874485300a1c3f0da60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1946702549
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1946702547}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.0982976, y: -0.5514729, z: -0.047870774}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 14
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2087405888
 GameObject:
   m_ObjectHideFlags: 0
@@ -1348,7 +1406,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.37119043}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.50006104, y: -0.9160156}
+  m_AnchoredPosition: {x: 0.5, y: -0.9160156}
   m_SizeDelta: {x: 1, y: 2.355957}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2087405890
@@ -1690,6 +1748,11 @@ PrefabInstance:
       propertyPath: lvlToPlay
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 6191571075810482295, guid: 8dc1a6f3573c7a7438681ae45f8f0555,
+        type: 3}
+      propertyPath: clipMouseDown
+      value: 
+      objectReference: {fileID: 8300000, guid: 2937b11a5490fdc438bf8176b7b14d44, type: 3}
     m_RemovedComponents:
     - {fileID: 6191571075810482293, guid: 8dc1a6f3573c7a7438681ae45f8f0555, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 8dc1a6f3573c7a7438681ae45f8f0555, type: 3}

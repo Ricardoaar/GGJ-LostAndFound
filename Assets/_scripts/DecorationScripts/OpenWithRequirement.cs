@@ -9,6 +9,7 @@ public class OpenWithRequirement : MonoBehaviour
     [SerializeField] private SpriteRenderer sprite;
     private List<Collider2D> _doorColliders = new List<Collider2D>();
     [SerializeField] private GameObject doorParticles;
+    [SerializeField] private AudioClip openClip;
 
     private void Awake()
     {
@@ -26,6 +27,7 @@ public class OpenWithRequirement : MonoBehaviour
         }
     }
 
+
     private bool PlayerNear()
     {
         return Mathf.Abs(transform.position.x - BounceStats.SingleInstance.transform.position.x) < openDistance;
@@ -40,8 +42,7 @@ public class OpenWithRequirement : MonoBehaviour
             door.enabled = false;
         }
 
+        SfxManager.SingleInstance.PlaySound(openClip);
         Instantiate(doorParticles, transform.position, Quaternion.identity);
-        GetComponents<Collider2D>();
-        //TODO:OpenGameObject
     }
 }

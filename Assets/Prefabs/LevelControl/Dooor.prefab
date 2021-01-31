@@ -102,6 +102,7 @@ MonoBehaviour:
   sprite: {fileID: 2610989973371035101}
   doorParticles: {fileID: 7157555146084781548, guid: d3d71f948c9f46747a13a49140f8009b,
     type: 3}
+  openClip: {fileID: 8300000, guid: 795e3326942ccbb40aa81453ef564d5f, type: 3}
 --- !u!61 &2610989973371035099
 BoxCollider2D:
   m_ObjectHideFlags: 0

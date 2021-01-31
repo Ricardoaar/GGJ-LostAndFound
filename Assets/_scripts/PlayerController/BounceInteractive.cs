@@ -8,7 +8,6 @@ public class BounceInteractive : MonoBehaviour
     [SerializeField] private ParticleSystem dieParticle;
     [SerializeField] private BounceController controller;
 
-
     #region Animator
 
     private bool _isOnGround;

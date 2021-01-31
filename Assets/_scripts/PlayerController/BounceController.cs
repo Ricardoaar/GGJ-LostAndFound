@@ -9,13 +9,13 @@ public class BounceController : MonoBehaviour
 {
     #region Variables
 
+    public static Action OnJump;
     public static event VoidEvent OnPlayerDamage;
     private Rigidbody2D _rigidbody2D;
     [SerializeField] private float velocity;
     [SerializeField] private float jumpForce;
     [SerializeField] private float maxDistanceGround;
     [SerializeField] private float immuneTime;
-
     private float _horizontal, _vertical, _lastHorizontal = 1;
     private bool _jumping;
     public LayerMask groundLayer;
@@ -80,6 +80,8 @@ public class BounceController : MonoBehaviour
 
     private void Jump()
     {
+        OnJump?.Invoke();
+
         _rigidbody2D.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
     }
 

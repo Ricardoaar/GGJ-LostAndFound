@@ -32,13 +32,28 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4687815835902073954, guid: 63ef2004dfd04754e80136496ab5e438,
         type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4687815835902073954, guid: 63ef2004dfd04754e80136496ab5e438,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4687815835902073954, guid: 63ef2004dfd04754e80136496ab5e438,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4687815835902073954, guid: 63ef2004dfd04754e80136496ab5e438,
+        type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.83
+      value: -3.17
       objectReference: {fileID: 0}
     - target: {fileID: 4687815835902073954, guid: 63ef2004dfd04754e80136496ab5e438,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.88
+      value: -1.28
       objectReference: {fileID: 0}
     - target: {fileID: 4687815835902073954, guid: 63ef2004dfd04754e80136496ab5e438,
         type: 3}
@@ -90,7 +105,18 @@ PrefabInstance:
       propertyPath: m_UseNormalMap
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 4687815835902073955, guid: 63ef2004dfd04754e80136496ab5e438,
+        type: 3}
+      propertyPath: m_PointLightInnerRadius
+      value: 0.34
+      objectReference: {fileID: 0}
+    - target: {fileID: 4687815835902073955, guid: 63ef2004dfd04754e80136496ab5e438,
+        type: 3}
+      propertyPath: m_PointLightOuterRadius
+      value: 3.05
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 4687815835902073981, guid: 63ef2004dfd04754e80136496ab5e438, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 63ef2004dfd04754e80136496ab5e438, type: 3}
 --- !u!1 &6378653108943128811 stripped
 GameObject:

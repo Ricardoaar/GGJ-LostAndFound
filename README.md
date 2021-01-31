@@ -9,6 +9,7 @@
 -Thanos
 
 ### **Made by**:
+#### **Programming**
 **Run19** [**Itch.io**](https://ricardorg.itch.io  "Itch.io")    [**Twitter**](https://twitter.com/Ricardora071 "Twitter")
 #### 2d Art:
 

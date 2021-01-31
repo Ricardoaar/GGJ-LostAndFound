@@ -8,7 +8,7 @@ public class OpenWithRequirement : MonoBehaviour
     [SerializeField] private float openDistance;
     [SerializeField] private SpriteRenderer sprite;
     private List<Collider2D> _doorColliders = new List<Collider2D>();
-    [SerializeField] private ParticleSystem doorParticles;
+    [SerializeField] private GameObject doorParticles;
 
     private void Awake()
     {
@@ -34,13 +34,13 @@ public class OpenWithRequirement : MonoBehaviour
 
     private void OpenRoad()
     {
-        sprite.enabled = false;
+        gameObject.SetActive(false);
         foreach (var door in _doorColliders)
         {
             door.enabled = false;
         }
 
-        doorParticles.Play();
+        Instantiate(doorParticles, transform.position, Quaternion.identity);
         GetComponents<Collider2D>();
         //TODO:OpenGameObject
     }

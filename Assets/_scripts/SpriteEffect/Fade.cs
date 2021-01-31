@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 [DisallowMultipleComponent]
@@ -19,6 +20,7 @@ public class Fade : MonoBehaviour
         _currentAlpha = 1;
         _goOn = false;
     }
+
 
     private void Effect()
     {

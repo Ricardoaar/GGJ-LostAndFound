@@ -20,6 +20,12 @@ public class TrapFall : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
+        if (other.gameObject.layer == LayerMask.NameToLayer("Damage") ||
+            other.gameObject.layer == LayerMask.NameToLayer(""))
+        {
+            return;
+        }
+
         gameObject.SetActive(false);
         transform.position = _initialPosition;
     }

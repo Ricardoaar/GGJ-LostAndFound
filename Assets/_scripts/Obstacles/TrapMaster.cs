@@ -4,7 +4,7 @@ using UnityEngine;
 public class TrapMaster : InteractiveObject
 {
     public Action OnTrapUp;
-    public bool canActiveTrap;
+    [HideInInspector] public bool canActiveTrap;
 
     private void Awake()
     {

@@ -10,4 +10,9 @@ public class StaticRotation : MonoBehaviour
     {
         transform.Rotate(direction * turnSeed);
     }
+
+    public void ChangeDirection(Vector3 newDirection)
+    {
+        direction = newDirection;
+    }
 }

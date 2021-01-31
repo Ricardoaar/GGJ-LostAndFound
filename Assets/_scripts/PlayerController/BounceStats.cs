@@ -7,6 +7,7 @@ public class BounceStats : MonoBehaviour
     private int _currentPlayerLife;
     public static BounceStats SingleInstance;
 
+    [SerializeField] private AudioClip keyCollectSound;
 
     public static Action OnDoorExit;
     public static Action OnDoorEnter;
@@ -60,6 +61,7 @@ public class BounceStats : MonoBehaviour
 
     private void CollectKey()
     {
+        SfxManager.SingleInstance.PlaySound(keyCollectSound);
         keys++;
         OnKeyCollect?.Invoke();
     }

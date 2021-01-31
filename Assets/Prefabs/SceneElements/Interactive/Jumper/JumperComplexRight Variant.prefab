@@ -98,7 +98,7 @@ PrefabInstance:
     - target: {fileID: 3892742386825544191, guid: c8501fbf88ef28f4c98bfb5a37688e6b,
         type: 3}
       propertyPath: m_Name
-      value: JumperComplexRight
+      value: JumperComplexRight Variant
       objectReference: {fileID: 0}
     - target: {fileID: 3892742387930106613, guid: c8501fbf88ef28f4c98bfb5a37688e6b,
         type: 3}

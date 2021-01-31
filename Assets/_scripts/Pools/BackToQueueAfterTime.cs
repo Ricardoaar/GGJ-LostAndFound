@@ -8,6 +8,11 @@ namespace _scripts
         private float _currentTime;
         [SerializeField] private ParticlePool pool;
 
+        public void ChangeTimeToBack(float time)
+        {
+            timeToBack = time;
+        }
+
         private void OnEnable()
         {
             _currentTime = 0;

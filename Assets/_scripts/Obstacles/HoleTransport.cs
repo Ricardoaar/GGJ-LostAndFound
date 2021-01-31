@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 public class HoleTransport : MonoBehaviour
 {
@@ -19,7 +20,6 @@ public class HoleTransport : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             var rb = other.gameObject.GetComponent<Rigidbody2D>();
-            Debug.Log(rb.velocity);
             Transport(rb);
         }
     }
@@ -28,7 +28,10 @@ public class HoleTransport : MonoBehaviour
     private void Transport(Rigidbody2D rb)
     {
         rb.gameObject.transform.position =
-            destiny.transform.position + new Vector3(0, _collider.bounds.size.y * 1.5f);
+            destiny.transform.position +
+            new Vector3(0, direction.y > 0 ? _collider.bounds.size.y : -_collider.bounds.size.y);
+        _collider.enabled = false;
+        StartCoroutine(RestartCollider());
         if (getImpulse)
         {
             AddForce(rb);
@@ -38,5 +41,11 @@ public class HoleTransport : MonoBehaviour
     private void AddForce(Rigidbody2D rb)
     {
         rb.velocity = direction * impulseForce;
+    }
+
+    private IEnumerator RestartCollider()
+    {
+        yield return new WaitForSeconds(1.0f);
+        _collider.enabled = true;
     }
 }

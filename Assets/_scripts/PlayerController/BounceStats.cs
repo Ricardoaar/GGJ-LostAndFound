@@ -16,6 +16,9 @@ public class BounceStats : MonoBehaviour
     public static Action OnKeyCollect;
     public static Action OnMaskCollect;
 
+
+    private int _easyMode;
+
     public int GetPlayerLife()
     {
         return _currentPlayerLife;
@@ -24,13 +27,19 @@ public class BounceStats : MonoBehaviour
     private void OnEnable()
     {
         keys = 0;
-        BounceController.OnPlayerDamage += LostLife;
         _currentPlayerLife = initialPlayerLifes;
+        if (_easyMode == 0)
+        {
+            BounceController.OnPlayerDamage += LostLife;
+        }
     }
 
     private void OnDisable()
     {
-        BounceController.OnPlayerDamage -= LostLife;
+        if (_easyMode == 0)
+        {
+            BounceController.OnPlayerDamage -= LostLife;
+        }
     }
 
     private void OnDestroy()
@@ -40,6 +49,7 @@ public class BounceStats : MonoBehaviour
 
     private void Awake()
     {
+        _easyMode = PlayerPrefs.GetInt("Immortal");
         if (SingleInstance == null)
         {
             SingleInstance = this;

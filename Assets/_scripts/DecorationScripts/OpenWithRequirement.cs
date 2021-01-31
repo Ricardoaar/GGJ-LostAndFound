@@ -21,16 +21,10 @@ public class OpenWithRequirement : MonoBehaviour
         if (!other.gameObject.CompareTag("Player")) return;
 
 
-        if (BounceStats.SingleInstance.keys >= quantityNecessary && PlayerNear())
+        if (BounceStats.SingleInstance.keys >= quantityNecessary)
         {
             OpenRoad();
         }
-    }
-
-
-    private bool PlayerNear()
-    {
-        return Mathf.Abs(transform.position.x - BounceStats.SingleInstance.transform.position.x) < openDistance;
     }
 
 

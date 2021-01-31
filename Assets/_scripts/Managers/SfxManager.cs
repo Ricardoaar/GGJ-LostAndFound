@@ -83,6 +83,15 @@ public class SfxManager : MonoBehaviour
         sfx.PlayOneShot(sfx.clip);
     }
 
+    public void PlayBounceSound()
+    {
+        sfx.clip = bounceSound;
+
+        sfx.PlayOneShot(sfx.clip);
+    }
+
+    [SerializeField] private AudioClip bounceSound;
+
     public void PlayMusicLevel(int id)
     {
         StopAllCoroutines();

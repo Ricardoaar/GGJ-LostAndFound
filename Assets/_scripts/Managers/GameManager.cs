@@ -7,7 +7,7 @@ public class GameManager : MonoBehaviour
     public static Action OnGameOver;
     private bool _isInGame;
     [SerializeField] private List<Color> _colors = new List<Color>();
-    
+
     private void Awake()
     {
         RandomColor.SetColors(_colors);

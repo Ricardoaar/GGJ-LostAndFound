@@ -16,6 +16,7 @@ public class JumperImpulse : InteractiveObject
     [SerializeField] private float force;
 
     [SerializeField] private DirectionVector direction;
+    public DirectionVector GetDirection() => direction;
 
     public void ApplyImpulse(Rigidbody2D rb)
     {

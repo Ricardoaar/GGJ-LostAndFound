@@ -79,7 +79,7 @@ public class BounceController : MonoBehaviour
         if (!_canMove) return;
 
 
-        if (!_affectedByJumper || _horizontal != 0 && Mathf.Abs(_rigidbody2D.velocity.x) < velocity)
+        if (!_affectedByJumper || _horizontal != 0 && Mathf.Abs(_rigidbody2D.velocity.x) < velocity + 1.0f)
         {
             _rigidbody2D.velocity = new Vector2(_horizontal * velocity, _rigidbody2D.velocity.y);
         }
@@ -101,13 +101,26 @@ public class BounceController : MonoBehaviour
         return hit;
     }
 
+    private void OnCollisionStay2D(Collision2D other)
+    {
+        if (other.gameObject.layer == LayerMask.NameToLayer("Damage") && _canGetDamage)
+        {
+            GetDamage(other.gameObject);
+        }
+    }
 
     private void OnCollisionEnter2D(Collision2D other)
     {
         _affectedByJumper = false;
         if (other.gameObject.layer == LayerMask.NameToLayer("Jumpers") && _sleepCoroutine == null)
         {
-            _affectedByJumper = true;
+            var direction = other.gameObject.GetComponent<JumperImpulse>().GetDirection();
+
+            if (direction == DirectionVector.right || direction == DirectionVector.left)
+            {
+                _affectedByJumper = true;
+            }
+
             //       StartCoroutine(SleepMove(0.2f));
             _rigidbody2D.velocity = Vector2.zero;
             other.gameObject.GetComponent<JumperImpulse>().ApplyImpulse(_rigidbody2D);

@@ -31,6 +31,7 @@ public class RandomColor : MonoBehaviour
 
     public static void SetColors(List<Color> colors)
     {
+        availableColors.Clear();
         foreach (var color in colors)
         {
             availableColors.Add(color);

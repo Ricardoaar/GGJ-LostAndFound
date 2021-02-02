@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections;
+using System.Numerics;
 using UnityEngine;
+using Vector2 = UnityEngine.Vector2;
 
 public delegate void VoidEvent(float time);
 
@@ -70,9 +72,14 @@ public class BounceController : MonoBehaviour
         }
     }
 
+    private bool _affectedByJumper;
+
     private void FixedUpdate()
     {
-        if (_canMove)
+        if (!_canMove) return;
+
+
+        if (!_affectedByJumper || _horizontal != 0 && Mathf.Abs(_rigidbody2D.velocity.x) < velocity)
         {
             _rigidbody2D.velocity = new Vector2(_horizontal * velocity, _rigidbody2D.velocity.y);
         }
@@ -97,9 +104,11 @@ public class BounceController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
+        _affectedByJumper = false;
         if (other.gameObject.layer == LayerMask.NameToLayer("Jumpers") && _sleepCoroutine == null)
         {
-            StartCoroutine(SleepMove(0.2f));
+            _affectedByJumper = true;
+            //       StartCoroutine(SleepMove(0.2f));
             _rigidbody2D.velocity = Vector2.zero;
             other.gameObject.GetComponent<JumperImpulse>().ApplyImpulse(_rigidbody2D);
             SfxManager.SingleInstance.PlayBounceSound();

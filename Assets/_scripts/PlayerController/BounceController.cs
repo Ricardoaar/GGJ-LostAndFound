@@ -121,7 +121,6 @@ public class BounceController : MonoBehaviour
                 _affectedByJumper = true;
             }
 
-            //       StartCoroutine(SleepMove(0.2f));
             _rigidbody2D.velocity = Vector2.zero;
             other.gameObject.GetComponent<JumperImpulse>().ApplyImpulse(_rigidbody2D);
             SfxManager.SingleInstance.PlayBounceSound();

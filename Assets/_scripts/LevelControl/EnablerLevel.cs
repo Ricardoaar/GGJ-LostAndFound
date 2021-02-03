@@ -2,7 +2,7 @@
 
 public class EnablerLevel : MonoBehaviour
 {
-    [SerializeField] private SceneLoader _loader;
+    [SerializeField] private SceneLoader loader;
 
     [SerializeField] private int levelToUnlock;
 
@@ -11,7 +11,7 @@ public class EnablerLevel : MonoBehaviour
     {
         if (LevelManager.SingleInstance.GetLvlsCompleted() >= levelToUnlock)
         {
-            _loader.CanPlayLvl();
+            loader.CanPlayLvl();
         }
     }
 }

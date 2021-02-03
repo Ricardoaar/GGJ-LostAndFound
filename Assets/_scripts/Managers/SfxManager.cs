@@ -1,16 +1,20 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using DefaultNamespace;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class SfxManager : MonoBehaviour
+public class SfxManager : MonoBehaviour, ISceneLoad
 {
     [SerializeField] private AudioSource musicOne, musicTwo, sfx;
     public static SfxManager SingleInstance;
     [SerializeReference] private List<AudioClip> levelsLoop = new List<AudioClip>();
     private AudioSource _currentAudioSource;
+    private int _lastScene;
 
     private void Awake()
     {
+        OnSceneLoadEvent.AddNotifier(this);
         if (SingleInstance == null)
         {
             SingleInstance = this;
@@ -71,7 +75,7 @@ public class SfxManager : MonoBehaviour
                 musicTwo.volume = volume;
                 break;
             default:
-                Debug.Log("Option not exists");
+                Debug.Log("Option does not exist");
                 break;
         }
     }
@@ -83,14 +87,9 @@ public class SfxManager : MonoBehaviour
         sfx.PlayOneShot(sfx.clip);
     }
 
-    public void PlayBounceSound()
-    {
-        sfx.clip = bounceSound;
-
-        sfx.PlayOneShot(sfx.clip);
-    }
 
     [SerializeField] private AudioClip bounceSound;
+
 
     public void PlayMusicLevel(int id)
     {
@@ -101,6 +100,11 @@ public class SfxManager : MonoBehaviour
         switch (id)
         {
             case 0:
+                if (_lastScene == 0)
+                {
+                    break;
+                }
+
                 StartCoroutine(FadeMusic(_currentAudioSource, next));
                 next.clip = levelsLoop[0];
                 break;
@@ -140,5 +144,18 @@ public class SfxManager : MonoBehaviour
         next.volume = 1;
         current.volume = 0;
         _currentAudioSource = next;
+    }
+
+    public void NotifySceneLoad()
+    {
+        _lastScene = SceneManager.GetActiveScene().buildIndex;
+    }
+
+
+    public void PlayBounceSound()
+    {
+        sfx.clip = bounceSound;
+
+        sfx.PlayOneShot(sfx.clip);
     }
 }

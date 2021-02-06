@@ -423,7 +423,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 64f9690b494db88498528079360eec4d, type: 3}
   - {fileID: 8300000, guid: 64a58f1b35751444b80173e1619f7ef5, type: 3}
   - {fileID: 8300000, guid: 64a58f1b35751444b80173e1619f7ef5, type: 3}
-  - {fileID: 8300000, guid: b05f431c765e49b4db7b0f7f46db3018, type: 3}
+  - {fileID: 8300000, guid: f76e9a840c0b8344682968f00e8cd3b4, type: 3}
   bounceSound: {fileID: 8300000, guid: c37b1eff7a745f043b8011c9cc25a0b1, type: 3}
 --- !u!1 &419050974
 GameObject:

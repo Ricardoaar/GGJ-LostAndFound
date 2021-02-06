@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -130,6 +130,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6191571075156219335, guid: 8dc1a6f3573c7a7438681ae45f8f0555,
         type: 3}
+      propertyPath: loader
+      value: 
+      objectReference: {fileID: 19293477}
+    - target: {fileID: 6191571075156219335, guid: 8dc1a6f3573c7a7438681ae45f8f0555,
+        type: 3}
       propertyPath: levelToUnlock
       value: 4
       objectReference: {fileID: 0}
@@ -141,7 +146,7 @@ PrefabInstance:
     - target: {fileID: 6191571075810482282, guid: 8dc1a6f3573c7a7438681ae45f8f0555,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6191571075810482289, guid: 8dc1a6f3573c7a7438681ae45f8f0555,
         type: 3}
@@ -236,12 +241,12 @@ PrefabInstance:
     - target: {fileID: 6191571075810482294, guid: 8dc1a6f3573c7a7438681ae45f8f0555,
         type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
-      value: 2
+      value: 1.7
       objectReference: {fileID: 0}
     - target: {fileID: 6191571075810482294, guid: 8dc1a6f3573c7a7438681ae45f8f0555,
         type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.y
-      value: 2
+      value: 2.43
       objectReference: {fileID: 0}
     - target: {fileID: 6191571075810482295, guid: 8dc1a6f3573c7a7438681ae45f8f0555,
         type: 3}
@@ -313,6 +318,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &19293477 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6191571075810482295, guid: 8dc1a6f3573c7a7438681ae45f8f0555,
+    type: 3}
+  m_PrefabInstance: {fileID: 19293474}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 19293475}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04d91a197a1f3214dbafc8be5a422d34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &106709987
 GameObject:
   m_ObjectHideFlags: 0
@@ -641,7 +658,7 @@ PrefabInstance:
         type: 3}
       propertyPath: loader
       value: 
-      objectReference: {fileID: 6191571075156219334}
+      objectReference: {fileID: 433247008}
     - target: {fileID: 6191571075156219335, guid: 8dc1a6f3573c7a7438681ae45f8f0555,
         type: 3}
       propertyPath: _loader
@@ -806,7 +823,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0.2985412}
-  m_AnchoredPosition: {x: -4, y: -30}
+  m_AnchoredPosition: {x: -4, y: -23}
   m_SizeDelta: {x: 0, y: 5.367737}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &865665599
@@ -2267,6 +2284,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: DialogsCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 8861408773471525075, guid: 123dc7b12aaf7a34e94636a3f2a3f2bf,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8861408773471525079, guid: 123dc7b12aaf7a34e94636a3f2a3f2bf,
         type: 3}

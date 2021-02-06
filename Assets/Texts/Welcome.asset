@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 931cd598eb2a4d4aa8921c0b2a924232, type: 3}
   m_Name: Welcome
   m_EditorClassIdentifier: 
-  text: Sparky esta perdido! Ayudalo a encontrar su mascara para volver a casa!
+  text: 'Thanks for play (:'

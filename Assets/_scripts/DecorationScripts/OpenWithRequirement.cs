@@ -5,8 +5,6 @@ using UnityEngine;
 public class OpenWithRequirement : MonoBehaviour
 {
     [SerializeField] private int quantityNecessary;
-    [SerializeField] private float openDistance;
-    [SerializeField] private SpriteRenderer sprite;
     private List<Collider2D> _doorColliders = new List<Collider2D>();
     [SerializeField] private GameObject doorParticles;
     [SerializeField] private AudioClip openClip;
@@ -25,6 +23,11 @@ public class OpenWithRequirement : MonoBehaviour
         {
             OpenRoad();
         }
+    }
+
+    private void OnDisable()
+    {
+        BounceStats.OnDoorExit?.Invoke();
     }
 
 

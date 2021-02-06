@@ -32,7 +32,7 @@ public class DifficultSetter : MonoBehaviour, ISceneLoad
 
     private void UpdateStateImg()
     {
-        image.color = _immortal == 0 ? Color.white : Color.green;
+        image.color = _immortal == 0 ? Color.white : Color.red;
     }
 
     public void NotifySceneLoad()
